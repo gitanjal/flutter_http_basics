@@ -12,7 +12,6 @@ class _AddPostState extends State<AddPost> {
   TextEditingController _controllerTitle = TextEditingController();
   TextEditingController _controllerBody = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,15 +24,11 @@ class _AddPostState extends State<AddPost> {
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(
-                  hintText: 'Add a title'
-                ),
+                decoration: InputDecoration(hintText: 'Add a title'),
                 controller: _controllerTitle,
               ),
               TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Add a body'
-                ),
+                decoration: InputDecoration(hintText: 'Add a body'),
                 controller: _controllerBody,
                 maxLines: 5,
               ),
@@ -44,17 +39,14 @@ class _AddPostState extends State<AddPost> {
                       'body': _controllerBody.text,
                     };
 
-                    bool status = await HTTPHelper()
-                        .addItem(dataToUpdate);
+                    bool status = await HTTPHelper().addItem(dataToUpdate);
 
                     if (status) {
                       ScaffoldMessenger.of(context)
                           .showSnackBar(SnackBar(content: Text('Post added')));
-                    }
-                    else
-                    {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text('Failed to add the post')));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Failed to add the post')));
                     }
                   },
                   child: Text('Submit'))

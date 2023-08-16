@@ -16,25 +16,26 @@ class PostDetails extends StatelessWidget {
       appBar: AppBar(
         title: Text('Details'),
         actions: [
-          IconButton(onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => EditPost(post)));
-          }, icon: Icon(Icons.edit)),
-          IconButton(onPressed: () async{
-            //Delete
-            bool deleted=await HTTPHelper().deleteItem(itemId);
+          IconButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => EditPost(post)));
+              },
+              icon: Icon(Icons.edit)),
+          IconButton(
+              onPressed: () async {
+                //Delete
+                bool deleted = await HTTPHelper().deleteItem(itemId);
 
-            if(deleted)
-              {
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBar(content: Text('Post deleted')));
-              }
-            else
-              {
-                ScaffoldMessenger.of(context)
-                    .showSnackBar(SnackBar(content: Text('Failed to delete')));
-              }
-          }, icon: Icon(Icons.delete)),
+                if (deleted) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text('Post deleted')));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Failed to delete')));
+                }
+              },
+              icon: Icon(Icons.delete)),
         ],
       ),
       body: FutureBuilder<Map>(

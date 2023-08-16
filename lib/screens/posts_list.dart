@@ -16,9 +16,8 @@ class PostsList extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => AddPost()));
-
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => AddPost()));
         },
         child: Icon(Icons.add),
       ),
@@ -42,7 +41,8 @@ class PostsList extends StatelessWidget {
                     subtitle: Text('${thisItem['body']}'),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => PostDetails(thisItem['id'].toString())));
+                          builder: (context) =>
+                              PostDetails(thisItem['id'].toString())));
                     },
                   );
                 });

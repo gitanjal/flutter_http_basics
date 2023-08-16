@@ -48,14 +48,12 @@ class _EditPostState extends State<EditPost> {
                         .updateItem(dataToUpdate, widget.post['id'].toString());
 
                     if (status) {
-                      ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text('Post updated')));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Post updated')));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Failed to update the post')));
                     }
-                    else
-                      {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(SnackBar(content: Text('Failed to update the post')));
-                      }
                   },
                   child: Text('Submit'))
             ],
