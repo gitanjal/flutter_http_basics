@@ -15,7 +15,7 @@ class HTTPHelper {
       String jsonString = response.body;
       //Convert to List<Map>
       List data = jsonDecode(jsonString);
-      items= data.cast<Map>();
+      items = data.cast<Map>();
     }
 
     return items;
@@ -44,19 +44,14 @@ class HTTPHelper {
     bool status = false;
 
     //Add the item to the database, call the API
-    http.Response response = await http
-        .post(
+    http.Response response = await http.post(
         Uri.parse('https://jsonplaceholder.typicode.com/posts'),
         body: jsonEncode(data),
-        headers: {
-          'Content-type':'application/json'
-        }
-    );
+        headers: {'Content-type': 'application/json'});
 
-    if(response.statusCode==201)
-      {
-        status=response.body.isNotEmpty;
-      }
+    if (response.statusCode == 201) {
+      status = response.body.isNotEmpty;
+    }
 
     return status;
   }
@@ -66,18 +61,13 @@ class HTTPHelper {
     bool status = false;
 
     //Update the item, call the API
-    http.Response response = await http
-        .put(
+    http.Response response = await http.put(
         Uri.parse('https://jsonplaceholder.typicode.com/posts/$itemId'),
         body: jsonEncode(data),
-        headers: {
-          'Content-type':'application/json'
-        }
-    );
+        headers: {'Content-type': 'application/json'});
 
-    if(response.statusCode==200)
-    {
-      status=response.body.isNotEmpty;
+    if (response.statusCode == 200) {
+      status = response.body.isNotEmpty;
     }
 
     return status;
@@ -88,12 +78,13 @@ class HTTPHelper {
     bool status = false;
 
     //Delete the item from the Database
-    http.Response response=await http.delete(Uri.parse('https://jsonplaceholder.typicode.com/posts/$itemId'),);
+    http.Response response = await http.delete(
+      Uri.parse('https://jsonplaceholder.typicode.com/posts/$itemId'),
+    );
 
-    if(response.statusCode==200)
-      {
-        status=true;
-      }
+    if (response.statusCode == 200) {
+      status = true;
+    }
 
     return status;
   }
