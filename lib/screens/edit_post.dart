@@ -31,9 +31,17 @@ class _EditPostState extends State<EditPost> {
           child: Column(
             children: [
               TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Add a title',
+                  labelText: 'Title',
+                ),
                 controller: _controllerTitle,
               ),
               TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Add a body',
+                  labelText: 'Body',
+                ),
                 controller: _controllerBody,
                 maxLines: 5,
               ),

@@ -24,11 +24,19 @@ class _AddPostState extends State<AddPost> {
           child: Column(
             children: [
               TextFormField(
-                decoration: InputDecoration(hintText: 'Add a title'),
+                decoration: const InputDecoration(
+                  icon: Icon(Icons.title),
+                  hintText: 'Add a title',
+                  labelText: 'Title',
+                ),
                 controller: _controllerTitle,
               ),
               TextFormField(
-                decoration: InputDecoration(hintText: 'Add a body'),
+                decoration: const InputDecoration(
+                  icon: Icon(Icons.subject),
+                  hintText: 'Add a body',
+                  labelText: 'Body',
+                ),
                 controller: _controllerBody,
                 maxLines: 5,
               ),

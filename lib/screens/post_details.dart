@@ -48,14 +48,17 @@ class PostDetails extends StatelessWidget {
           if (snapshot.hasData) {
             post = snapshot.data!;
 
-            return Column(
-              children: [
-                Text(
-                  '${post['title']}',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text('${post['body']}'),
-              ],
+            return Center(
+              child: Column(
+                children: [
+                  Text(
+                    '${post['title']}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 20),
+                  Text('${post['body']}'),
+                ],
+              ),
             );
           }
 

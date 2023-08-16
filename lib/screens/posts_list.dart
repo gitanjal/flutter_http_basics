@@ -33,19 +33,34 @@ class PostsList extends StatelessWidget {
             List<Map> posts = snapshot.data;
 
             return ListView.builder(
-                itemCount: posts.length,
-                itemBuilder: (context, index) {
-                  Map thisItem = posts[index];
-                  return ListTile(
+              itemCount: posts.length,
+              itemBuilder: (context, index) {
+                Map thisItem = posts[index];
+                return Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 4.0,
+                  ),
+                  child: ListTile(
+                    trailing: Text('${thisItem['id']}'),
                     title: Text('${thisItem['title']}'),
                     subtitle: Text('${thisItem['body']}'),
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
                           builder: (context) =>
-                              PostDetails(thisItem['id'].toString())));
+                              PostDetails(thisItem['id'].toString()),
+                        ),
+                      );
                     },
-                  );
-                });
+                  ),
+                );
+              },
+            );
           }
 
           //Display a loader
